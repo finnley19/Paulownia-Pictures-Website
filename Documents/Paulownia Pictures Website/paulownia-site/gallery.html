@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Paulownia Pictures</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <a class="site-title" href="index.html">I HEAR FISH DROWNING &nbsp; a film by Sarah Strong</a>
+    <nav><ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="screenings.html">SCREENINGS</a></li>
+      <li><a href="gallery.html" class="active">GALLERY</a></li>
+    </ul></nav>
+  </div>
+
+  <div class="gallery-wrap">
+    <p class="gallery-note">
+      Merriman Summer School 2014 — For comments and a set of images of Sarah presenting the film
+      refer to their <a href="https://www.facebook.com/pages/Merriman-Summer-School-2014/722700641120002" target="_blank">Facebook page</a> and Website.
+    </p>
+
+    <!--
+      INSTRUCTIONS: Place your 8 saved images in the images/ subfolder.
+      Name them gallery-01.jpg through gallery-08.jpg
+      (or update the src values below to match your filenames).
+
+      Layout: 1&2 side by side, 3&4 side by side, then 5-8 each full width.
+    -->
+
+    <!-- Images 1 & 2 side by side -->
+    <div class="gallery-row-2">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-01.jpeg'" alt="Film still 1" loading="lazy">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-02.jpeg'" alt="Film still 2" loading="lazy">
+    </div>
+
+    <!-- Images 3 & 4 side by side -->
+    <div class="gallery-row-2">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-03.jpeg'" alt="Film still 3" loading="lazy">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-04.jpeg'" alt="Film still 4" loading="lazy">
+    </div>
+
+    <!-- Image 5 full width -->
+    <div class="gallery-row-1">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-05.jpeg'" alt="Film still 5" loading="lazy">
+    </div>
+
+    <!-- Image 6 full width -->
+    <div class="gallery-row-1">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-06.jpeg'" alt="Film still 6" loading="lazy">
+    </div>
+
+    <!-- Image 7 full width -->
+    <div class="gallery-row-1">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-07.jpeg'" alt="Film still 7" loading="lazy">
+    </div>
+
+    <!-- Image 8 full width -->
+    <div class="gallery-row-1">
+      <img src="'/Users/finn/Documents/Paulownia Pictures Website/paulownia-site/images/Gallery-08.jpeg'" alt="Film still 8" loading="lazy">
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer>copyright : PAULOWNIA &nbsp; PICTURES &nbsp; 2014</footer>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    document.getElementById('lightbox-close').addEventListener('click', closeLB);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+    document.querySelectorAll('.gallery-row-1 img, .gallery-row-2 img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+      });
+    });
+    function closeLB() { lightbox.classList.remove('open'); lightboxImg.src = ''; }
+  </script>
+</body>
+</html>
