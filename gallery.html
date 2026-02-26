@@ -5,129 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery — Paulownia Pictures</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10,8,6,0.93);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      box-shadow: 0 0 80px rgba(0,0,0,0.8);
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      font-family: 'Cormorant Garamond', serif;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-    .lightbox-close:hover { opacity: 1; }
-    .gallery-grid img { cursor: pointer; }
-  </style>
 </head>
 <body>
+  <div class="topbar">
+    <a class="site-title" href="index.html">I HEAR FISH DROWNING &nbsp; a film by Sarah Strong</a>
+    <nav><ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="screenings.html">SCREENINGS</a></li>
+      <li><a href="gallery.html" class="active">GALLERY</a></li>
+    </ul></nav>
+  </div>
 
-  <header>
-    <div class="header-inner">
-      <p class="site-title">Paulownia Pictures</p>
-      <h1 class="film-title">I Hear Fish Drowning</h1>
-      <p class="film-subtitle">a film by Sarah Strong</p>
-    </div>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="screenings.html">Screenings</a></li>
-      <li><a href="gallery.html" class="active">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <h2 class="screenings-title">Gallery</h2>
-
-    <p class="gallery-intro">
-      Merriman Summer School 2014 — for comments and a set of images of Sarah presenting the film,
-      refer to their <a href="https://www.facebook.com/pages/Merriman-Summer-School-2014/722700641120002" target="_blank">Facebook page</a>.
+  <div class="gallery-wrap">
+    <p class="gallery-note">
+      Merriman Summer School 2014 — For comments and a set of images of Sarah presenting the film
+      refer to their <a href="https://www.facebook.com/pages/Merriman-Summer-School-2014/722700641120002" target="_blank">Facebook page</a> and Website.
     </p>
 
     <!--
-      GALLERY IMAGES:
-      Replace each src="images/gallery-01.jpg" etc. with the actual filenames
-      of the photos you saved from the original site. Place all image files
-      in the "images/" subfolder alongside this HTML file.
+      INSTRUCTIONS: Place your 8 saved images in the images/ subfolder.
+      Name them gallery-01.jpg through gallery-08.jpg
+      (or update the src values below to match your filenames).
 
-      The original site had 10 images. Name them however you like, e.g.:
-        gallery-01.jpg, gallery-02.jpg ... gallery-10.jpg
-      or use the original Wix filenames if you kept them.
+      Layout: 1&2 side by side, 3&4 side by side, then 5-8 each full width.
     -->
-    <div class="gallery-grid" id="gallery">
+
+    <!-- Images 1 & 2 side by side -->
+    <div class="gallery-row-2">
       <img src="images/gallery-01.jpg" alt="Film still 1" loading="lazy">
       <img src="images/gallery-02.jpg" alt="Film still 2" loading="lazy">
+    </div>
+
+    <!-- Images 3 & 4 side by side -->
+    <div class="gallery-row-2">
       <img src="images/gallery-03.jpg" alt="Film still 3" loading="lazy">
       <img src="images/gallery-04.jpg" alt="Film still 4" loading="lazy">
-      <img src="images/gallery-05.jpg" alt="Film still 5" loading="lazy">
-      <img src="images/gallery-06.jpg" alt="Film still 6" loading="lazy">
-      <img src="images/gallery-07.jpg" alt="Film still 7" loading="lazy">
-      <img src="images/gallery-08.jpg" alt="Film still 8" loading="lazy">
-      <img src="images/gallery-09.jpg" alt="Film still 9" loading="lazy">
-      <img src="images/gallery-10.jpg" alt="Film still 10" loading="lazy">
     </div>
-  </main>
 
-  <!-- Lightbox overlay -->
+    <!-- Image 5 full width -->
+    <div class="gallery-row-1">
+      <img src="images/gallery-05.jpg" alt="Film still 5" loading="lazy">
+    </div>
+
+    <!-- Image 6 full width -->
+    <div class="gallery-row-1">
+      <img src="images/gallery-06.jpg" alt="Film still 6" loading="lazy">
+    </div>
+
+    <!-- Image 7 full width -->
+    <div class="gallery-row-1">
+      <img src="images/gallery-07.jpg" alt="Film still 7" loading="lazy">
+    </div>
+
+    <!-- Image 8 full width -->
+    <div class="gallery-row-1">
+      <img src="images/gallery-08.jpg" alt="Film still 8" loading="lazy">
+    </div>
+  </div>
+
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightbox-close">&times;</span>
     <img id="lightbox-img" src="" alt="">
   </div>
 
-  <footer>
-    <p>Copyright &copy; Paulownia Pictures 2014</p>
-  </footer>
+  <footer>copyright : PAULOWNIA &nbsp; PICTURES &nbsp; 2014</footer>
 
   <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.getElementById('lightbox-close');
-
-    document.querySelectorAll('#gallery img').forEach(img => {
+    document.getElementById('lightbox-close').addEventListener('click', closeLB);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+    document.querySelectorAll('.gallery-row-1 img, .gallery-row-2 img').forEach(img => {
       img.addEventListener('click', () => {
         lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
         lightbox.classList.add('open');
       });
     });
-
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightboxImg.src = '';
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
+    function closeLB() { lightbox.classList.remove('open'); lightboxImg.src = ''; }
   </script>
-
 </body>
 </html>
