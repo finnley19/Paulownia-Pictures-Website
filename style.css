@@ -95,7 +95,7 @@ nav ul li a.active { background: #ff0; color: #000; border-color: #ff0; }
 .screening a { color: #ff0; text-decoration: none; font-size: 12px; }
 
 /* ── GALLERY ── */
-.gallery-wrap { padding: 40px 28px 80px; max-width: 1000px; }
+.gallery-wrap { padding: 40px 28px 80px; max-width: 1000px; margin: 0 auto; }
 .gallery-note { font-size: 13px; font-weight: 300; color: #888; margin-bottom: 28px; font-style: italic; line-height: 1.7; }
 .gallery-note a { color: #ff0; text-decoration: none; }
 
